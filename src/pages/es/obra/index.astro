@@ -1,40 +1,23 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Gallery from '../../../components/Gallery.astro';
+import { readdir } from 'fs/promises';
 
-// Ejemplo de imágenes de la galería (placeholder con las imágenes del intro)
-const sampleImages = [
-	{
-		src: '/intro/media/cuenca.jpg',
-		alt: 'Puerta de Cuenca',
-		title: 'Puerta de la Catedral de Cuenca'
-	},
-	{
-		src: '/intro/media/texas.jpg',
-		alt: 'Puerta de Texas',
-		title: 'Texas Door - Meadows Museum'
-	},
-	{
-		src: '/intro/media/toro1.jpg',
-		alt: 'Toro',
-		title: 'Toro - Serie Taurina'
-	},
-	{
-		src: '/intro/media/woods.jpg',
-		alt: 'Woods',
-		title: 'Woods - Paisaje'
-	},
-	{
-		src: '/intro/media/cuenca.jpg',
-		alt: 'Cuenca 2',
-		title: 'Catedral de Cuenca - Vista 2'
-	},
-	{
-		src: '/intro/media/texas.jpg',
-		alt: 'Texas 2',
-		title: 'Detalle Puerta Texas'
-	}
-];
+// Get all gallery images
+const galleryDir = 'public/images/gallery';
+const files = await readdir(galleryDir);
+
+const allImages = files
+  .filter(f => f.endsWith('.jpg') && !f.includes('├'))
+  .sort()
+  .map((filename) => {
+    const name = filename.replace('.jpg', '').replace(/-1$/, '');
+    return {
+      src: `/images/gallery/${filename}`,
+      alt: name,
+      title: name.replace(/-/g, ' ')
+    };
+  });
 ---
 
 <Layout
@@ -59,46 +42,23 @@ const sampleImages = [
 		<!-- Page Header -->
 		<section class="bg-gradient-to-br from-stone-800 to-stone-900 text-white py-20 px-4">
 			<div class="max-w-7xl mx-auto text-center">
-				<h2 class="text-4xl md:text-6xl font-bold mb-6">Obra Completa</h2>
+				<h2 class="text-4xl md:text-6xl font-bold mb-6">Galería Completa</h2>
 				<p class="text-xl text-stone-300 max-w-3xl mx-auto">
-					Explorar la colección completa de obras de Miguel Zapata, organizadas por categoría.
+					Colección de {allImages.length} obras de Miguel Zapata.
 					Click en cualquier imagen para verla en detalle.
 				</p>
 			</div>
 		</section>
 
-		<!-- Categories Navigation -->
-		<section class="bg-stone-100 border-b border-stone-200">
-			<div class="max-w-7xl mx-auto px-4 py-6">
-				<nav class="flex flex-wrap gap-4 justify-center">
-					<a href="/es/obra/" class="px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold">Todas</a>
-					<a href="/es/obra/grabado/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Grabado</a>
-					<a href="/es/obra/dibujo/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Dibujo</a>
-					<a href="/es/obra/tecnica-mixta/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Técnica Mixta</a>
-					<a href="/es/obra/oleo/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Óleo</a>
-					<a href="/es/obra/escultura/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Escultura</a>
-					<a href="/es/obra/collage/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Collage</a>
-				</nav>
-			</div>
-		</section>
-
 		<!-- Gallery Section -->
 		<section class="max-w-7xl mx-auto py-16 px-4">
-			<div class="mb-12">
-				<h3 class="text-3xl font-bold mb-4">Galería de Ejemplo</h3>
-				<p class="text-stone-600">
-					Esta es una demostración de la galería con lightbox modal.
-					Las imágenes reales de las obras se migrarán desde WordPress.
-				</p>
-			</div>
-
-			<Gallery images={sampleImages} columns={3} />
+			<Gallery images={allImages} columns={3} />
 		</section>
 
 		<!-- Instructions -->
 		<section class="bg-stone-100 py-12 px-4">
 			<div class="max-w-4xl mx-auto text-center">
-				<h4 class="text-2xl font-bold mb-4">Instrucciones de Navegación</h4>
+				<h4 class="text-2xl font-bold mb-4">Navegación</h4>
 				<div class="grid md:grid-cols-3 gap-6 mt-8">
 					<div class="bg-white p-6 rounded-lg shadow">
 						<div class="text-4xl mb-3">🖱️</div>
