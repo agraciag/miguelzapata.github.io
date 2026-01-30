@@ -1,0 +1,130 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Gallery from '../../../components/Gallery.astro';
+
+// Sample gallery images (placeholder using intro images)
+const sampleImages = [
+	{
+		src: '/intro/media/cuenca.jpg',
+		alt: 'Cuenca Door',
+		title: 'Cathedral of Cuenca Door'
+	},
+	{
+		src: '/intro/media/texas.jpg',
+		alt: 'Texas Door',
+		title: 'Texas Door - Meadows Museum'
+	},
+	{
+		src: '/intro/media/toro1.jpg',
+		alt: 'Bull',
+		title: 'Bull - Bullfighting Series'
+	},
+	{
+		src: '/intro/media/woods.jpg',
+		alt: 'Woods',
+		title: 'Woods - Landscape'
+	},
+	{
+		src: '/intro/media/cuenca.jpg',
+		alt: 'Cuenca 2',
+		title: 'Cathedral of Cuenca - View 2'
+	},
+	{
+		src: '/intro/media/texas.jpg',
+		alt: 'Texas 2',
+		title: 'Texas Door Detail'
+	}
+];
+---
+
+<Layout
+	title="Miguel Zapata Artwork"
+	lang="en"
+	description="Complete gallery of Miguel Zapata's artwork. Engravings, oil paintings, sculptures and mixed media."
+>
+	<main class="min-h-screen">
+		<!-- Header / Navigation -->
+		<header class="bg-stone-900 text-white py-6 px-4 sticky top-0 z-40 shadow-lg">
+			<div class="max-w-7xl mx-auto flex justify-between items-center">
+				<h1 class="text-2xl md:text-3xl font-bold tracking-wide">Miguel Zapata</h1>
+				<nav class="flex items-center gap-6">
+					<a href="/en/" class="hover:text-amber-400 transition">Home</a>
+					<a href="/en/biography/" class="hover:text-amber-400 transition">Biography</a>
+					<a href="/en/artwork/" class="hover:text-amber-400 transition font-semibold">Artwork</a>
+					<a href="/es/obra/" class="px-4 py-2 bg-white/10 rounded hover:bg-white/20 transition text-sm">ES</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Page Header -->
+		<section class="bg-gradient-to-br from-stone-800 to-stone-900 text-white py-20 px-4">
+			<div class="max-w-7xl mx-auto text-center">
+				<h2 class="text-4xl md:text-6xl font-bold mb-6">Complete Artwork</h2>
+				<p class="text-xl text-stone-300 max-w-3xl mx-auto">
+					Explore the complete collection of Miguel Zapata's works, organized by category.
+					Click on any image to view it in detail.
+				</p>
+			</div>
+		</section>
+
+		<!-- Categories Navigation -->
+		<section class="bg-stone-100 border-b border-stone-200">
+			<div class="max-w-7xl mx-auto px-4 py-6">
+				<nav class="flex flex-wrap gap-4 justify-center">
+					<a href="/en/artwork/" class="px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold">All</a>
+					<a href="/en/artwork/engraving/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Engraving</a>
+					<a href="/en/artwork/drawings/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Drawings</a>
+					<a href="/en/artwork/mixed-media/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Mixed Media</a>
+					<a href="/en/artwork/oil-painting/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Oil Painting</a>
+					<a href="/en/artwork/sculpture/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Sculpture</a>
+					<a href="/en/artwork/collage/" class="px-6 py-3 bg-white text-stone-700 rounded-lg hover:bg-stone-200 transition">Collage</a>
+				</nav>
+			</div>
+		</section>
+
+		<!-- Gallery Section -->
+		<section class="max-w-7xl mx-auto py-16 px-4">
+			<div class="mb-12">
+				<h3 class="text-3xl font-bold mb-4">Sample Gallery</h3>
+				<p class="text-stone-600">
+					This is a demonstration of the gallery with lightbox modal.
+					The actual artwork images will be migrated from WordPress.
+				</p>
+			</div>
+
+			<Gallery images={sampleImages} columns={3} />
+		</section>
+
+		<!-- Instructions -->
+		<section class="bg-stone-100 py-12 px-4">
+			<div class="max-w-4xl mx-auto text-center">
+				<h4 class="text-2xl font-bold mb-4">Navigation Instructions</h4>
+				<div class="grid md:grid-cols-3 gap-6 mt-8">
+					<div class="bg-white p-6 rounded-lg shadow">
+						<div class="text-4xl mb-3">🖱️</div>
+						<h5 class="font-bold mb-2">Click on image</h5>
+						<p class="text-sm text-stone-600">Opens image in fullscreen</p>
+					</div>
+					<div class="bg-white p-6 rounded-lg shadow">
+						<div class="text-4xl mb-3">⌨️</div>
+						<h5 class="font-bold mb-2">Arrow keys ← →</h5>
+						<p class="text-sm text-stone-600">Navigate between images</p>
+					</div>
+					<div class="bg-white p-6 rounded-lg shadow">
+						<div class="text-4xl mb-3">✕</div>
+						<h5 class="font-bold mb-2">ESC or X</h5>
+						<p class="text-sm text-stone-600">Closes the enlarged view</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="bg-stone-900 text-white py-12 px-4">
+			<div class="max-w-7xl mx-auto text-center">
+				<p class="text-stone-400">&copy; {new Date().getFullYear()} Miguel Zapata. All rights reserved.</p>
+				<p class="text-stone-500 mt-2 text-sm">Website created in memory of the artist</p>
+			</div>
+		</footer>
+	</main>
+</Layout>

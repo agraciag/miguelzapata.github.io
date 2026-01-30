@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+	title="Miguel Zapata - Sculptor, Painter and Engraver"
+	lang="en"
+	description="Miguel Zapata (1940-2014). Complete works of the Spanish sculptor, painter and engraver. Unique fusion of Renaissance tradition and modern expressionism."
+>
+	<main class="min-h-screen">
+		<!-- Header / Navigation -->
+		<header class="bg-stone-900 text-white py-6 px-4 sticky top-0 z-50 shadow-lg">
+			<div class="max-w-7xl mx-auto flex justify-between items-center">
+				<h1 class="text-2xl md:text-3xl font-bold tracking-wide">Miguel Zapata</h1>
+				<nav class="flex items-center gap-6">
+					<a href="/en/" class="hover:text-amber-400 transition">Home</a>
+					<a href="/en/biography/" class="hover:text-amber-400 transition">Biography</a>
+					<a href="/en/artwork/" class="hover:text-amber-400 transition">Artwork</a>
+					<a href="/es/" class="px-4 py-2 bg-white/10 rounded hover:bg-white/20 transition text-sm">ES</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Hero Section -->
+		<section class="relative h-[70vh] flex items-center justify-center bg-gradient-to-br from-stone-800 to-stone-900">
+			<div class="absolute inset-0 opacity-20 bg-[url('/pattern.svg')] bg-repeat"></div>
+			<div class="relative text-center text-white px-4">
+				<h2 class="text-5xl md:text-7xl font-bold mb-6">Miguel Zapata</h2>
+				<p class="text-xl md:text-2xl text-stone-300 mb-4">Sculptor, Painter and Engraver</p>
+				<p class="text-lg text-stone-400">1940 - 2014</p>
+				<div class="mt-8">
+					<a href="/en/artwork/" class="inline-block px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition shadow-lg">
+						Explore Artwork
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Introduction -->
+		<section class="max-w-4xl mx-auto py-20 px-4">
+			<div class="prose prose-lg prose-stone mx-auto">
+				<h3 class="text-3xl font-bold mb-6 text-center">A Unique Vision of Art</h3>
+				<p class="text-lg text-stone-700 leading-relaxed">
+					Miguel Zapata (Cuenca, 1940 - Madrid, 2014) was a Spanish artist whose work transcends traditional categories.
+					His work fuses Renaissance tradition with modern expressionism, creating pieces that are simultaneously painting,
+					sculpture and engraving.
+				</p>
+				<p class="text-lg text-stone-700 leading-relaxed">
+					From his training in Cuenca to his work at the Meadows Museum in Dallas, Texas, Zapata developed a unique
+					artistic language that explores themes such as Spanish architectural heritage, historical figures and the
+					fusion of past and present.
+				</p>
+			</div>
+		</section>
+
+		<!-- Gallery Preview (placeholder) -->
+		<section class="bg-stone-100 py-20 px-4">
+			<div class="max-w-7xl mx-auto">
+				<h3 class="text-4xl font-bold text-center mb-12">Artwork Categories</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{['Engraving', 'Drawings', 'Mixed Media', 'Oil Painting', 'Sculpture', 'Collage'].map(category => (
+						<a
+							href={`/en/artwork/${category.toLowerCase().replace(' ', '-')}/`}
+							class="group relative aspect-square bg-stone-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+						>
+							<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+							<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+								<h4 class="text-2xl font-bold text-white">{category}</h4>
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="bg-stone-900 text-white py-12 px-4">
+			<div class="max-w-7xl mx-auto text-center">
+				<p class="text-stone-400">&copy; {new Date().getFullYear()} Miguel Zapata. All rights reserved.</p>
+				<p class="text-stone-500 mt-2 text-sm">Website created in memory of the artist</p>
+			</div>
+		</footer>
+	</main>
+</Layout>

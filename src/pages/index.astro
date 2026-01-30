@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Miguel Zapata - Artist">
+	<div class="min-h-screen relative overflow-hidden bg-black">
+		<!-- Video Background -->
+		<div class="absolute inset-0 z-0">
+			<video
+				class="absolute inset-0 w-full h-full object-cover opacity-60"
+				autoplay
+				muted
+				loop
+				playsinline
+				poster="/intro/media/toro1.jpg"
+			>
+				<source src="/intro/media/miguel-optimized.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+		</div>
+
+		<!-- Overlay -->
+		<div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10"></div>
+
+		<!-- Background Audio (starts muted by default) - Purcell -->
+		<audio id="background-audio" loop>
+			<source src="/intro/media/miguel-audio.mp3" type="audio/mpeg" />
+		</audio>
+
+		<!-- Content -->
+		<div class="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
+			<!-- Title -->
+			<header class="text-center mb-16">
+				<h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-wide">
+					Miguel Zapata
+				</h1>
+				<p class="text-xl md:text-2xl text-white/80 font-light">
+					1940 - 2014
+				</p>
+			</header>
+
+			<!-- Language Selection -->
+			<div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center">
+				<!-- Spanish -->
+				<a
+					href="/es/"
+					class="group relative overflow-hidden rounded-lg shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 transform hover:scale-105"
+				>
+					<div class="relative w-64 h-80 md:w-80 md:h-96">
+						<img
+							src="/intro/media/cuenca.jpg"
+							alt="Español"
+							class="w-full h-full object-cover"
+						/>
+						<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/60 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<span class="text-3xl font-bold text-white tracking-wider">ESPAÑOL</span>
+						</div>
+					</div>
+				</a>
+
+				<!-- English -->
+				<a
+					href="/en/"
+					class="group relative overflow-hidden rounded-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105"
+				>
+					<div class="relative w-64 h-80 md:w-80 md:h-96">
+						<img
+							src="/intro/media/texas.jpg"
+							alt="English"
+							class="w-full h-full object-cover"
+						/>
+						<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent group-hover:from-black/60 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<span class="text-3xl font-bold text-white tracking-wider">ENGLISH</span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<!-- Scroll Indicator -->
+			<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+				<svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+				</svg>
+			</div>
+
+			<!-- Audio Control Button -->
+			<button
+				id="audio-toggle"
+				class="absolute bottom-8 right-8 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm transition-all"
+				aria-label="Toggle audio"
+			>
+				<svg id="audio-icon-playing" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+				</svg>
+				<svg id="audio-icon-muted" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+</Layout>
+
+<script>
+	// Audio control functionality (starts muted by default)
+	const audio = document.getElementById('background-audio') as HTMLAudioElement;
+	const audioToggle = document.getElementById('audio-toggle');
+	const iconPlaying = document.getElementById('audio-icon-playing');
+	const iconMuted = document.getElementById('audio-icon-muted');
+
+	let isPlaying = false;
+
+	// Start with muted icon visible
+	iconPlaying?.classList.add('hidden');
+	iconMuted?.classList.remove('hidden');
+
+	audioToggle?.addEventListener('click', () => {
+		if (isPlaying) {
+			audio?.pause();
+			iconPlaying?.classList.add('hidden');
+			iconMuted?.classList.remove('hidden');
+		} else {
+			audio?.play();
+			iconPlaying?.classList.remove('hidden');
+			iconMuted?.classList.add('hidden');
+		}
+		isPlaying = !isPlaying;
+	});
+</script>
