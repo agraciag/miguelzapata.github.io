@@ -56,16 +56,59 @@ import Layout from '../../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<!-- Gallery Preview -->
+		<!-- Gallery Categories -->
 		<section class="bg-stone-100 py-20 px-4">
-			<div class="max-w-7xl mx-auto text-center">
-				<h3 class="text-4xl font-bold mb-6">Galería de Obra</h3>
-				<p class="text-stone-600 mb-12 max-w-2xl mx-auto">
-					Explora la colección completa de 82 obras de Miguel Zapata, incluyendo grabados, óleos, esculturas y técnica mixta.
-				</p>
-				<a href="/es/obra/" class="inline-block px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition shadow-lg text-lg">
-					Ver Galería Completa
-				</a>
+			<div class="max-w-7xl mx-auto">
+				<h3 class="text-4xl font-bold text-center mb-12">Categorías de Obra</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<a href="/es/obra/grabado/" class="group relative aspect-square bg-stone-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+						<img src="/images/gallery/Caballero-Durero-1-1.jpg" alt="Grabado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+						<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<h4 class="text-2xl font-bold text-white">Grabado</h4>
+						</div>
+					</a>
+					<a href="/es/obra/dibujo/" class="group relative aspect-square bg-stone-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+						<img src="/images/gallery/Estudio-mural-II-1.jpg" alt="Dibujo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+						<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<h4 class="text-2xl font-bold text-white">Dibujo</h4>
+						</div>
+					</a>
+					<a href="/es/obra/tecnica-mixta/" class="group relative aspect-square bg-stone-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+						<img src="/images/gallery/Cardenal-Z-1..jpg" alt="Técnica Mixta" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+						<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<h4 class="text-2xl font-bold text-white">Técnica Mixta</h4>
+						</div>
+					</a>
+					<a href="/es/obra/oleo/" class="group relative aspect-square bg-stone-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+						<img src="/images/gallery/El-beso-1.jpg" alt="Óleo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+						<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<h4 class="text-2xl font-bold text-white">Óleo</h4>
+						</div>
+					</a>
+					<a href="/es/obra/escultura/" class="group relative aspect-square bg-stone-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+						<img src="/images/gallery/Farinata-1.jpg" alt="Escultura" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+						<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<h4 class="text-2xl font-bold text-white">Escultura</h4>
+						</div>
+					</a>
+					<a href="/es/obra/collage/" class="group relative aspect-square bg-stone-200 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+						<img src="/images/gallery/Acordeón-1.jpg" alt="Collage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+						<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/50 transition-all duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-6 text-center">
+							<h4 class="text-2xl font-bold text-white">Collage</h4>
+						</div>
+					</a>
+				</div>
+				<div class="text-center mt-12">
+					<a href="/es/obra/" class="inline-block px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition shadow-lg">
+						Ver Todas las Obras
+					</a>
+				</div>
 			</div>
 		</section>
 
