@@ -1,18 +1,17 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import Gallery from '../../../../components/Gallery.astro';
-import { readdir } from 'fs/promises';
+import { categories } from '../../../../data/categories';
 
-const galleryDir = 'public/images/gallery';
-const files = await readdir(galleryDir);
-const allImages = files.filter(f => f.endsWith('.jpg') && !f.includes('├')).sort().map((filename) => ({
-  src: \`/images/gallery/\${filename}\`,
+const categoryImages = categories.oleo;
+const images = categoryImages.map((filename) => ({
+  src: `/images/gallery/${filename}`,
   alt: filename.replace('.jpg', '').replace(/-1$/, ''),
   title: filename.replace('.jpg', '').replace(/-1$/, '').replace(/-/g, ' ')
 }));
 ---
 
-<Layout title={\`Oil Painting - Miguel Zapata\`} lang="en">
+<Layout title="Oil Painting - Miguel Zapata" lang="en">
 	<main class="min-h-screen">
 		<header class="bg-stone-900 text-white py-6 px-4 sticky top-0 z-40 shadow-lg">
 			<div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -21,18 +20,18 @@ const allImages = files.filter(f => f.endsWith('.jpg') && !f.includes('├')).so
 					<a href="/en/" class="hover:text-amber-400 transition">Home</a>
 					<a href="/en/biography/" class="hover:text-amber-400 transition">Biography</a>
 					<a href="/en/artwork/" class="hover:text-amber-400 transition">Artwork</a>
-					<a href="/es/obra/" class="px-4 py-2 bg-white/10 rounded hover:bg-white/20 transition text-sm">ES</a>
+					<a href="/es/obra/oleo/" class="px-4 py-2 bg-white/10 rounded hover:bg-white/20 transition text-sm">ES</a>
 				</nav>
 			</div>
 		</header>
 		<section class="bg-gradient-to-br from-stone-800 to-stone-900 text-white py-20 px-4">
 			<div class="max-w-7xl mx-auto text-center">
 				<h2 class="text-4xl md:text-6xl font-bold mb-4">Oil Painting</h2>
-				<p class="text-xl text-stone-300">Complete collection</p>
+				<p class="text-xl text-stone-300">{images.length} artworks</p>
 			</div>
 		</section>
 		<section class="max-w-7xl mx-auto py-16 px-4">
-			<Gallery images={allImages} columns={3} />
+			<Gallery images={images} columns={3} />
 		</section>
 		<footer class="bg-stone-900 text-white py-12 px-4">
 			<div class="max-w-7xl mx-auto text-center">
