@@ -1,60 +1,63 @@
 # Estado del Proyecto - Miguel Zapata Website
-**Última actualización:** 30 Enero 2026, 21:20 CST
+**Última actualización:** 7 Febrero 2026
 
-## 🎯 Estado General
+## Estado General
 
-✅ **SITIO WEB PUBLICADO Y FUNCIONAL**
+**SITIO WEB COMPLETADO Y FUNCIONAL**
 - URL: https://miguelzapata.es
 - Repositorio: https://github.com/agraciag/miguelzapata.github.io
 - Estado: Desplegado en GitHub Pages
-- SSL: En proceso de generación (1-24 horas)
+- SSL: Activo (HTTPS funcionando)
 - DNS: Configurado correctamente en IONOS
 
 ---
 
-## ✅ Tareas Completadas (11/11)
+## Tareas Completadas
 
-### 1. Análisis de Contenido ✅
+### 1. Análisis de Contenido
 - [x] WordPress español analizado (179 obras, 6 categorías)
 - [x] WordPress inglés analizado (traducción completa confirmada)
 - [x] Estructura de galerías identificada
 - [x] Biografías extraídas en ambos idiomas
 
-### 2. Infraestructura Técnica ✅
+### 2. Infraestructura Técnica
 - [x] Proyecto Astro inicializado
 - [x] Tailwind CSS configurado
 - [x] Git inicializado
 - [x] Repositorio GitHub creado
 - [x] GitHub Actions configurado para deploy automático
 - [x] Dominio personalizado configurado
+- [x] HTTPS/SSL activo
 
-### 3. Optimización de Assets ✅
+### 3. Optimización de Assets
 - [x] Video optimizado: 292 MB → 29 MB (90% reducción)
 - [x] Audio extraído del video (Purcell)
-- [x] 82 imágenes procesadas → 77 usables (sin caracteres especiales)
+- [x] 82 imágenes procesadas → 75 usables
 - [x] Thumbnails generados (400x400px)
 - [x] Versiones WebP creadas
 - [x] **Tamaño total: 73 MB** (vs 337 MB original)
 
-### 4. Contenido Migrado ✅
+### 4. Contenido Migrado
 - [x] Landing page con video de fondo
 - [x] Audio de Purcell (desactivado por defecto)
-- [x] Biografía completa en español (3,200 palabras)
-- [x] Biografía completa en inglés (7,400+ caracteres)
+- [x] Biografía completa en español
+- [x] Biografía completa en inglés
 - [x] Navegación bilingüe funcional
-- [x] 6 categorías de obra con thumbnails
-- [x] Galería completa con 77 imágenes
+- [x] 6 categorías de obra organizadas
+- [x] Galería completa con imágenes filtradas por categoría
 
-### 5. Componentes y Funcionalidad ✅
+### 5. Componentes y Funcionalidad
 - [x] Galería modal con lightbox
 - [x] Navegación con teclado (← → ESC)
 - [x] Diseño responsive
 - [x] Hero sections con imágenes de fondo
-- [x] Sistema de categorías
+- [x] Sistema de categorías con mapeo desde WordPress
+- [x] Breadcrumbs en páginas de categorías
+- [x] Thumbnails en tarjetas de categorías
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 miguelzapata.github.io/
@@ -68,11 +71,13 @@ miguelzapata.github.io/
 │   │   ├── texas.jpg
 │   │   └── toro.jpg
 │   └── images/
-│       ├── gallery/              # 77 JPG + 77 WebP (36 MB)
-│       └── thumbs/               # 77 thumbnails (3.5 MB)
+│       ├── gallery/              # 75 JPG + WebP
+│       └── thumbs/               # Thumbnails
 ├── src/
 │   ├── components/
 │   │   └── Gallery.astro         # Componente galería con lightbox
+│   ├── data/
+│   │   └── categories.ts         # Mapeo de imágenes por categoría
 │   ├── layouts/
 │   │   └── Layout.astro          # Layout base bilingüe
 │   ├── pages/
@@ -80,38 +85,24 @@ miguelzapata.github.io/
 │   │   ├── es/
 │   │   │   ├── index.astro       # Home español
 │   │   │   ├── biografia/        # Biografía
-│   │   │   └── obra/             # Galerías
-│   │   │       ├── index.astro   # Galería completa
-│   │   │       ├── grabado/      # Categoría Grabado
-│   │   │       ├── dibujo/       # Categoría Dibujo
-│   │   │       ├── tecnica-mixta/
-│   │   │       ├── oleo/
-│   │   │       ├── escultura/
-│   │   │       └── collage/
+│   │   │   └── obra/             # Galerías por categoría
 │   │   └── en/
 │   │       ├── index.astro       # Home inglés
 │   │       ├── biography/        # Biography
-│   │       └── artwork/          # Galleries
-│   │           ├── index.astro
-│   │           ├── engraving/
-│   │           ├── drawings/
-│   │           ├── mixed-media/
-│   │           ├── oil-painting/
-│   │           ├── sculpture/
-│   │           └── collage/
+│   │       └── artwork/          # Galleries by category
 │   └── styles/
 │       └── global.css
 ├── scripts/
-│   └── optimize-images.mjs      # Script de optimización
+│   └── optimize-images.mjs
 ├── CNAME                        # Dominio: miguelzapata.es
-├── DEPLOY.md                    # Guía de despliegue
+├── DEPLOY.md
 ├── README.md
-└── PROJECT_STATUS.md            # Este archivo
+└── PROJECT_STATUS.md
 ```
 
 ---
 
-## 🌐 URLs del Sitio
+## URLs del Sitio
 
 ### Producción
 - **Landing:** https://miguelzapata.es
@@ -134,197 +125,85 @@ npm run dev
 
 ---
 
-## 🔧 Configuración DNS (IONOS)
+## Distribución de Obras por Categoría
 
-### ✅ Registros Correctos
-```
-A       @      185.199.108.153
-A       @      185.199.109.153
-A       @      185.199.110.153
-A       @      185.199.111.153
-CNAME   www    agraciag.github.io
-```
+| Categoría | ES | EN | Obras |
+|-----------|----|----|-------|
+| Grabado | /es/obra/grabado/ | /en/artwork/engraving/ | 4 |
+| Dibujo | /es/obra/dibujo/ | /en/artwork/drawings/ | 27 |
+| Técnica Mixta | /es/obra/tecnica-mixta/ | /en/artwork/mixed-media/ | 29 |
+| Óleo | /es/obra/oleo/ | /en/artwork/oil-painting/ | 4 |
+| Escultura | /es/obra/escultura/ | /en/artwork/sculpture/ | 3 |
+| Collage | /es/obra/collage/ | /en/artwork/collage/ | 8 |
 
-### ⚠️ Pendiente de Eliminar
-```
-AAAA    @      2001:8d8:100f:f000:0:0:0:2d1    ❌ ELIMINAR
-AAAA    ftp    2001:8d8:100f:f000:0:0:0:2d1    ❌ ELIMINAR
-```
-
-### ✅ Mantener (Email)
-- Todos los registros MX
-- Todos los CNAME de DKIM
-- TXT de SPF
+**Total:** 75 obras organizadas
 
 ---
 
-## 📊 Estadísticas
+## Estadísticas
 
 ### Assets Optimizados
 - **Video:** 29 MB (720p H.264)
 - **Audio:** 3.1 MB (MP3 Purcell)
-- **Imágenes Gallery:** 36 MB (77 JPG + 77 WebP)
-- **Thumbnails:** 3.5 MB (77 thumbnails)
-- **Otros:** ~1.5 MB
-- **TOTAL:** 73 MB ✅ (bajo límite GitHub Pages 500 MB)
+- **Imágenes Gallery:** ~36 MB
+- **Thumbnails:** ~3.5 MB
+- **TOTAL:** 73 MB (bajo límite GitHub Pages 500 MB)
 
 ### Contenido
-- **Páginas totales:** 17
-- **Imágenes:** 77 obras
+- **Páginas totales:** 19
+- **Imágenes:** 75 obras
 - **Categorías:** 6
 - **Idiomas:** 2 (ES/EN)
-- **Palabras biografía ES:** ~3,200
-- **Palabras biografía EN:** ~2,000
 
 ---
 
-## 🔄 Próximos Pasos / Trabajo Pendiente
-
-### Prioridad Alta
-1. **Eliminar registros AAAA en IONOS** (aún apuntan a servidor antiguo)
-2. **Organizar imágenes por categoría real**
-   - Actualmente todas las categorías muestran las 77 imágenes
-   - Pendiente: mapear IDs de WordPress a nombres de archivo
-   - Asignar cada imagen a su categoría correcta
-
-### Prioridad Media
-3. **Optimizar video adicional** (si es necesario)
-   - Considerar lazy loading o carga condicional
-4. **Agregar metadata SEO**
-   - Open Graph tags
-   - Twitter cards
-   - Sitemap.xml
-5. **Google Analytics** (si se desea)
-
-### Prioridad Baja
-6. **Categorizar las 77 imágenes** según WordPress original:
-   - Grabado: 8 imágenes (página 41)
-   - Dibujo: 48 imágenes (página 33)
-   - Técnica Mixta: ~78 imágenes (página 39)
-   - Óleo: 9 imágenes (página 44)
-   - Escultura: 15 imágenes (página 57)
-   - Collage: 15 imágenes (página 31)
-
----
-
-## 💻 Comandos Útiles
+## Comandos Útiles
 
 ### Desarrollo
 ```bash
-# Iniciar servidor de desarrollo
-npm run dev
-
-# Build para producción
-npm run build
-
-# Preview del build
-npm run preview
+npm run dev      # Servidor de desarrollo
+npm run build    # Build para producción
+npm run preview  # Preview del build
 ```
 
 ### Git & Deploy
 ```bash
-# Ver estado
 git status
-
-# Commit cambios
 git add .
-git commit -m "Descripción de cambios
-
-Co-Authored-By: Claude (claude-sonnet-4-5) <noreply@anthropic.com>"
-
-# Push (dispara deploy automático)
-git push
-
-# Ver workflows
-gh run list --limit 5
-
-# Ver logs de último workflow
-gh run view
-```
-
-### Optimización de Imágenes
-```bash
-# Optimizar nuevas imágenes
-node scripts/optimize-images.mjs
+git commit -m "Descripción"
+git push         # Dispara deploy automático (~2-3 min)
 ```
 
 ---
 
-## 📝 Notas Técnicas
+## Notas Técnicas
 
-### Audio en Landing Page
-- Por defecto: **DESACTIVADO** (no intrusivo)
-- Usuario puede activar con botón
-- Fuente: Audio del video original (Purcell)
-- Archivo: `/intro/media/miguel-audio.mp3`
+### Mapeo de Categorías
+- Archivo: `src/data/categories.ts`
+- Extraído del SQL de WordPress original
+- Cada categoría tiene su lista de archivos de imagen
 
-### Imágenes
-- Filtro aplicado: Excluye archivos con caracteres especiales (├, │, etc.)
-- 82 originales → 77 usables
-- Formato: JPG + WebP
-- Thumbnails: 400x400px
+### Navegación
+- Header sticky con menú principal
+- Breadcrumb en páginas de categorías (`← Obra`)
+- Cambio de idioma en cada página
 
 ### Galería Modal
 - Click en imagen: abre modal
 - Navegación: flechas ← → o botones
 - Cerrar: ESC, X o click fuera
-- Muestra título y contador (ej: "5 / 77")
 
 ### Deploy
 - Automático en cada `git push` a `main`
 - GitHub Actions ejecuta `npm run build`
-- Deploy a GitHub Pages
 - Tiempo: ~2-3 minutos
 
 ---
 
-## 🐛 Problemas Conocidos
-
-### Resueltos ✅
-- ✅ 404s en categorías → Páginas creadas
-- ✅ Hero sin imagen de fondo → Agregada toro.jpg
-- ✅ Sin thumbnails en categorías → Agregados
-- ✅ Audio incorrecto → Cambiado a Purcell del video
-
-### Pendientes ⚠️
-- ⚠️ Categorías muestran todas las imágenes (no filtradas)
-- ⚠️ SSL certificado en generación (normal, 1-24h)
-- ⚠️ Registros AAAA en IONOS por eliminar
-
----
-
-## 📧 Información de Contacto del Proyecto
-
-- **Repositorio:** https://github.com/agraciag/miguelzapata.github.io
-- **Usuario GitHub:** agraciag
-- **Dominio:** miguelzapata.es (IONOS)
-- **Hosting:** GitHub Pages
-
----
-
-## 📚 Recursos Adicionales
-
-### Archivos de Referencia
-- `/mnt/d/dev_projects/miguel_zapata/20151007 Miguel Zapata/ES/` - WordPress español
-- `/mnt/d/dev_projects/miguel_zapata/20151007 Miguel Zapata/EN/` - WordPress inglés
-- `/mnt/d/dev_projects/miguel_zapata/miguelzapata/intro/` - Landing original
-- `DEPLOY.md` - Guía completa de despliegue
-- `README.md` - Documentación general
-
-### SQL de WordPress
-- ES: `1445354629_-_db569286244.sql` (1.1 MB)
-- EN: `1445354496_-_db581684652.sql` (1.2 MB)
-
-### Ejemplos de Referencia
-- amayaaznar.es - Estructura similar
-- alejandrogracia.com - Patrón de diseño
-
----
-
-## ✨ Créditos
+## Créditos
 
 **Desarrollado por:**
-- Claude (claude-sonnet-4-5) - Desarrollo y migración
+- Claude (claude-sonnet-4-5, claude-opus-4-6) - Desarrollo y migración
 - Alejandro Gracia (@agraciag) - Dirección del proyecto
 
 **En memoria de:**
@@ -333,5 +212,4 @@ node scripts/optimize-images.mjs
 
 ---
 
-**Última sesión:** 30 Enero 2026
-**Próxima sesión:** Continuar con organización de imágenes por categoría
+**Proyecto completado:** 7 Febrero 2026
